@@ -37,3 +37,4 @@ COOKIE_NAME="name a cookie name"
 JWT_SECRET="jwt token here"
 ```
 # Talenapp
+# Talenapp
