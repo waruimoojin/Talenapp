@@ -28,7 +28,7 @@ $ npm install
 $ npm run dev or nodemon Server.js
 ```
 ```sh
-$ add a .env file and include the following environment variables
+$ add a .env file and include the following environmet variables
 ```
 ```
 DB_STRING="your database url"
