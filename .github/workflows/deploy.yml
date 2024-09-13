@@ -1,0 +1,45 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      # Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Docker Compose
+        run: |
+          COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)
+          sudo curl -L "https://github.com/docker/compose/releases/download/${COMPOSE_VERSION}/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+          sudo chmod +x /usr/local/bin/docker-compose
+          docker-compose --version
+
+      # Log in to GitHub Docker Registry with PAT
+      - name: Log in to GitHub Docker Registry
+        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
+
+      # Build and push frontend Docker image
+      - name: Build frontend Docker image
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}/frontend:latest -f ./frontend/Dockerfile ./frontend
+          docker push ghcr.io/${{ github.repository }}/frontend:latest
+
+      # Build and push backend Docker image
+      - name: Build backend Docker image
+        run: |
+          docker build -t ghcr.io/${{ github.repository }}/backend:latest -f ./backend/Dockerfile ./backend
+          docker push ghcr.io/${{ github.repository }}/backend:latest
+
+      # Deploy using Docker Compose
+      - name: Deploy using Docker Compose
+        run: docker-compose up -d

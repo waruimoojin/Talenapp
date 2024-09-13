@@ -19,6 +19,7 @@ import Swal from "sweetalert2";
 const JobCard = ({ job }) => {
     const date = dayjs(job?.jobDeadline).format("MMM Do, YYYY");
     const { user } = useUserContext();
+    const token = localStorage.getItem("token")
 
     const handleApply = async (id) => {
         let currentDate = new Date();
@@ -33,8 +34,13 @@ const JobCard = ({ job }) => {
         };
         try {
             const response = await postHandler({
-                url: "http://localhost:3000/api/v1/application/apply",
+                url: "http://192.168.1.10:3000/api/v1/application/apply",
                 body: appliedJob,
+                
+                    headers: {
+                      'Authorization': `Bearer ${token}`
+                    }
+                
             });
             Swal.fire({
                 icon: "success",

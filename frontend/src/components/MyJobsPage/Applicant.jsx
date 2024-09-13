@@ -3,7 +3,7 @@ import axios from "axios";
 import React from "react";
 import styled from "styled-components";
 import LoadingComTwo from "../shared/LoadingComTwo";
-
+const token = localStorage.getItem("token")
 const Applicant = () => {
     const {
         isPending,
@@ -14,8 +14,14 @@ const Applicant = () => {
         queryKey: ["my-jobs"],
         queryFn: async () => {
             const response = await axios.get(
-                `http://localhost:3000/api/v1/application/applicant-jobs`,
-                { withCredentials: true }
+                `http://192.168.1.10:3000/api/v1/application/applicant-jobs`,
+                
+                {
+                    withCredentials: true, 
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                      }
+                }
             );
             return response?.data?.result;
         },

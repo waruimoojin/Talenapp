@@ -3,6 +3,7 @@ const userAuthorizationHandler = (...role) => {
         const userRole = req?.user?.role;
 
         if (!role.includes(userRole)) {
+            console.log("ITS MEEEEEE")
             return res.status(403).json({
                 status: false,
                 message: "You don't have permission",

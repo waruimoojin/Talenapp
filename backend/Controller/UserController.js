@@ -106,17 +106,18 @@ exports.loginUser = async (req, res, next) => {
                 const TOKEN = JWTGenerator(tokenObj);
 
                 const one_day = 1000 * 60 * 60 * 24; //since token expire in 1day
-
-                res.cookie(process.env.COOKIE_NAME, TOKEN, {
-                    expires: new Date(Date.now() + one_day),
-                    secure: true, // Sent only over HTTPS
-                    httpOnly: true, // Restricts access from client-side scripts
-                    signed: true, // Helps keep the cookie secure
-                    sameSite: "None",
-                });
+                // backend login api
+                // res.cookie(process.env.COOKIE_NAME, TOKEN, {
+                //     expires: new Date(Date.now() + one_day),
+                //     secure: true, // Sent only over HTTPS
+                //     httpOnly: true, // Restricts access from client-side scripts
+                //     signed: true, // Helps keep the cookie secure
+                //     sameSite: "None",
+                // });
                 res.status(200).json({
                     status: true,
                     message: "Login Successfully",
+                    token: TOKEN
                 });
             } else {
                 next(createError(500, "Email or Password not matched"));

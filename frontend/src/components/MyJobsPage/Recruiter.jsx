@@ -19,10 +19,14 @@ const Recruiter = () => {
         queryKey: ["rec-jobs"],
         queryFn: async () => {
             const response = await axios.get(
-                `http://localhost:3000/api/v1/application/recruiter-jobs`,
+                `http://192.168.1.10:3000/api/v1/application/recruiter-jobs`,
                 {
-                    withCredentials: true,
+                    withCredentials: true, 
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                      }
                 }
+                
             );
             return response?.data?.result;
         },
@@ -52,7 +56,7 @@ const Recruiter = () => {
         const newStatus = { recruiterId, status: "accepted" };
         updateJobStatusMutation.mutate({
             body: newStatus,
-            url: `http://localhost:3000/api/v1/application/${id}`,
+            url: `http://192.168.1.10:3000/api/v1/application/${id}`,
         });
     };
 
@@ -60,7 +64,7 @@ const Recruiter = () => {
         const newStatus = { recruiterId, status: "rejected" };
         updateJobStatusMutation.mutate({
             body: newStatus,
-            url: `http://localhost:3000/api/v1/application/${id}`,
+            url: `http://192.168.1.10:3000/api/v1/application/${id}`,
         });
     };
 

@@ -51,14 +51,17 @@ const AddJob = () => {
             jobContact: data?.contact,
         };
 
-        console.log(newJob)
-        // posting;
+        console.log("NEW JOB ->",newJob) // see this log what i,t show??? this is frontend console check there browser
+        // posting; i sumbit i need to restart i guess right
         try {
+            const token = localStorage.getItem("token")
             const response = await axios.post(
-                "http://localhost:3000/api/v1/jobs",
+                "http://192.168.1.10:3000/api/v1/jobs",
                 newJob,
                 {
-                    withCredentials: true,
+                    headers: {
+                      'Authorization': `Bearer ${token}`
+                    }
                 }
             );
             Swal.fire({

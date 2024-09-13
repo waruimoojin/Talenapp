@@ -1,0 +1,25 @@
+version: '3'
+services:
+  frontend:
+    image: ghcr.io/waruimoojin/frontend:latest
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    networks:
+      - talentconnect_network
+
+  backend:
+    image: ghcr.io/waruimoojin/backend:latest
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+    networks:
+      - talentconnect_network
+
+networks:
+  talentconnect_network:
+    driver: bridge

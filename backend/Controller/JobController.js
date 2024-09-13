@@ -172,6 +172,7 @@ module.exports.getSingleJob = async (req, res, next) => {
 
 module.exports.addJob = async (req, res, next) => {
     const jobData = req.body;
+    console.log(jobData)
     try {
         const isJobExists = await JobModel.findOne({
             company: jobData.comapny,
