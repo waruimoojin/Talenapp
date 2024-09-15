@@ -16,7 +16,7 @@ const UserContext = ({ children }) => {
         try {
             const token = localStorage.getItem("token"); // all places where you are calling api, you need to add token
             const response = await axios.get(
-                `http://localhost:3000/api/v1/auth/me`,
+                `http://192.168.56.13:3000/api/v1/auth/me`,
                 {
                   headers: {
                     'Authorization': `Bearer ${token}`
