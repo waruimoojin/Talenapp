@@ -34,7 +34,7 @@ const JobCard = ({ job }) => {
         };
         try {
             const response = await postHandler({
-                url: "http://192.168.1.10:3000/api/v1/application/apply",
+                url: "http://localhost:3000/api/v1/application/apply",
                 body: appliedJob,
                 
                     headers: {

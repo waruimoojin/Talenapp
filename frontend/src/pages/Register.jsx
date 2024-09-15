@@ -38,7 +38,7 @@ const Register = () => {
             // posting
             try {
                 const response = await axios.post(
-                    "http://192.168.1.10:3000/api/v1/auth/register",
+                    "http://localhost:3000/api/v1/auth/register",
                     user
                 );
 

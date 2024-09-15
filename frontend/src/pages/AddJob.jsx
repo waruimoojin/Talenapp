@@ -56,7 +56,7 @@ const AddJob = () => {
         try {
             const token = localStorage.getItem("token")
             const response = await axios.post(
-                "http://192.168.1.10:3000/api/v1/jobs",
+                "http://localhost:3000/api/v1/jobs",
                 newJob,
                 {
                     headers: {

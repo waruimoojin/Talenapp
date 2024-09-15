@@ -29,7 +29,7 @@ const EditProfile = () => {
     //     queryKey: ["profile"],
     //     queryFn: async () => {
     //         const response = await axios.get(
-    //             `http://192.168.1.10:3000/api/v1/users/${id}`
+    //             `http://localhost:3000/api/v1/users/${id}`
     //         );
     //         return response.data;
     //     },
@@ -60,7 +60,7 @@ const EditProfile = () => {
             }
 
             const response = await axios.patch(
-                `http://192.168.1.10:3000/api/v1/users`,
+                `http://localhost:3000/api/v1/users`,
                 updateUser,
                 {
                     withCredentials: true,

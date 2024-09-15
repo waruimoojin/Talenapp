@@ -25,7 +25,7 @@ const JobContext = ({ children }) => {
 
     useEffect(() => {
         handleJobFetch(
-            `http://192.168.1.10:3000/api/v1/jobs?page=1`
+            `http://localhost:3000/api/v1/jobs?page=1`
             
         );
     }, []);
