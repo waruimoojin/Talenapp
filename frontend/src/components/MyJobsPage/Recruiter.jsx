@@ -19,7 +19,7 @@ const Recruiter = () => {
         queryKey: ["rec-jobs"],
         queryFn: async () => {
             const response = await axios.get(
-                `http://192.168.56.13:3000/api/v1/application/recruiter-jobs`,
+                `http://localhost:3000/api/v1/application/recruiter-jobs`,
                 {
                     withCredentials: true, 
                     headers: {
@@ -56,7 +56,7 @@ const Recruiter = () => {
         const newStatus = { recruiterId, status: "accepted" };
         updateJobStatusMutation.mutate({
             body: newStatus,
-            url: `http://192.168.56.13:3000/api/v1/application/${id}`,
+            url: `http://localhost:3000/api/v1/application/${id}`,
         });
     };
 
@@ -64,7 +64,7 @@ const Recruiter = () => {
         const newStatus = { recruiterId, status: "rejected" };
         updateJobStatusMutation.mutate({
             body: newStatus,
-            url: `http://192.168.56.13:3000/api/v1/application/${id}`,
+            url: `http://localhost:3000/api/v1/application/${id}`,
         });
     };
 

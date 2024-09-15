@@ -30,7 +30,7 @@ const Login = () => {
         // posting
         try {
             const response = await axios.post(
-                "http://192.168.56.13:3000/api/v1/auth/login",
+                "http://localhost:3000/api/v1/auth/login",
                 data,
                 {
                     withCredentials: true,

@@ -14,7 +14,7 @@ const Applicant = () => {
         queryKey: ["my-jobs"],
         queryFn: async () => {
             const response = await axios.get(
-                `http://192.168.56.13:3000/api/v1/application/applicant-jobs`,
+                `http://localhost:3000/api/v1/application/applicant-jobs`,
                 
                 {
                     withCredentials: true, 

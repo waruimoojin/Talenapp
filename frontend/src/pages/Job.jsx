@@ -28,7 +28,7 @@ const Job = () => {
         queryKey: ["job"],
         queryFn: () =>
             getSingleHandler(
-                `http://192.168.56.13:3000/api/v1/jobs/${id}`
+                `http://localhost:3000/api/v1/jobs/${id}`
             ),
     });
 
