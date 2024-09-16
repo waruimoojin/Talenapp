@@ -63,7 +63,7 @@ const EditProfile = () => {
                 `http://localhost:3000/api/v1/users`,
                 updateUser,
                 {
-                    withCredentials: true,
+                    withCredentials: false,
                 }
             );
             reset();

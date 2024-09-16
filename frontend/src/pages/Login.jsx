@@ -33,7 +33,7 @@ const Login = () => {
                 "http://localhost:3000/api/v1/auth/login",
                 data,
                 {
-                    withCredentials: true,
+                    withCredentials: false,
                 }
             );
             console.log("Response ", response.data)

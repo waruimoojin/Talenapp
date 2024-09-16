@@ -21,7 +21,7 @@ const Recruiter = () => {
             const response = await axios.get(
                 `http://localhost:3000/api/v1/application/recruiter-jobs`,
                 {
-                    withCredentials: true, 
+                    withCredentials: false, 
                     headers: {
                         'Authorization': `Bearer ${token}`
                       }

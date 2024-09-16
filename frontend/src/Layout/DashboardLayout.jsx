@@ -17,7 +17,7 @@ const DashboardLayout = () => {
         try {
             const response = await axios.post(
                 "http://localhost:3000/api/v1/auth/logout",
-                { withCredentials: true }
+                { withCredentials: false }
             );
             Swal.fire({
                 icon: "success",

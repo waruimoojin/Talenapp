@@ -49,7 +49,7 @@ const ManageJobs = () => {
         try {
             const response = await axios.delete(
                 `http://localhost:3000/api/v1/jobs/${id}`,
-                { withCredentials: true }
+                { withCredentials: false }
             );
 
             // const updateJobs = jobs?.result?.filter((job) => job._id !== id);

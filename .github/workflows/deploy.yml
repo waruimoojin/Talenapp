@@ -13,10 +13,11 @@ jobs:
       packages: write
 
     steps:
-      # Checkout the repository
+      # Cloner le dépôt
       - name: Checkout repository
         uses: actions/checkout@v2
-
+      
+      # Installer Docker Compose
       - name: Install Docker Compose
         run: |
           COMPOSE_VERSION=$(curl -s https://api.github.com/repos/docker/compose/releases/latest | jq -r .tag_name)
@@ -24,22 +25,22 @@ jobs:
           sudo chmod +x /usr/local/bin/docker-compose
           docker-compose --version
 
-      # Log in to GitHub Docker Registry with PAT
+      # Se connecter au registre Docker de GitHub avec PAT
       - name: Log in to GitHub Docker Registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 
-      # Build and push frontend Docker image
+      # Construire et pousser l'image Docker du frontend
       - name: Build frontend Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/frontend:v1.0.0 -f ./frontend/Dockerfile ./frontend
-          docker push ghcr.io/${{ github.repository }}/frontend:v1.0.0
+          docker build -t ghcr.io/${{ github.repository }}/frontend:v1.2.0 -f ./frontend/Dockerfile ./frontend
+          docker push ghcr.io/${{ github.repository }}/frontend:v1.2.0
 
-      # Build and push backend Docker image
+      # Construire et pousser l'image Docker du backend
       - name: Build backend Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/backend:v1.0.0 -f ./backend/Dockerfile ./backend
-          docker push ghcr.io/${{ github.repository }}/backend:v1.0.0
+          docker build -t ghcr.io/${{ github.repository }}/backend:v1.2.0 -f ./backend/Dockerfile ./backend
+          docker push ghcr.io/${{ github.repository }}/backend:v1.2.0
 
-      # Deploy using Docker Compose
+      # Déployer en utilisant Docker Compose
       - name: Deploy using Docker Compose
         run: docker-compose up -d

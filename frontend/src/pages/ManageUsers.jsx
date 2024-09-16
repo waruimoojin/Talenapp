@@ -45,7 +45,7 @@ const ManageUsers = () => {
             const response = await axios.patch(
                 `http://localhost:3000/api/v1/admin/update-role`,
                 updateUser,
-                { withCredentials: true }
+                { withCredentials: false }
             );
             refetch();
             Swal.fire({
