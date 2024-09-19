@@ -32,14 +32,14 @@ jobs:
       # Construire et pousser l'image Docker du frontend
       - name: Build frontend Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/frontend:v1.2.0 -f ./frontend/Dockerfile ./frontend
-          docker push ghcr.io/${{ github.repository }}/frontend:v1.2.0
+          docker build -t ghcr.io/${{ github.repository }}/frontend:v1.2.1 -f ./frontend/Dockerfile ./frontend
+          docker push ghcr.io/${{ github.repository }}/frontend:v1.2.1
 
       # Construire et pousser l'image Docker du backend
       - name: Build backend Docker image
         run: |
-          docker build -t ghcr.io/${{ github.repository }}/backend:v1.2.0 -f ./backend/Dockerfile ./backend
-          docker push ghcr.io/${{ github.repository }}/backend:v1.2.0
+          docker build -t ghcr.io/${{ github.repository }}/backend:v1.2.1 -f ./backend/Dockerfile ./backend
+          docker push ghcr.io/${{ github.repository }}/backend:v1.2.1
 
       # Déployer en utilisant Docker Compose
       - name: Deploy using Docker Compose
